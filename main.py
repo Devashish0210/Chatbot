@@ -84,3 +84,11 @@ async def chat_answer(text: str = Form(...), file: UploadFile = File(None)):
         return {"response": qa_result["answer"]}
 
     return {"response": "I don't have any context to answer from. Please upload an image first."}
+
+import os
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # Default to 8000 if PORT not set
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
