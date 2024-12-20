@@ -26,7 +26,7 @@ function ChatInterface() {
   
     try {
       const response = await axios.post(
-        "http://localhost:8000/chat",
+        "https://fastapi-backend-spef.onrender.com/chat",
         { text: input },
         {
           headers: {
@@ -61,7 +61,7 @@ function ChatInterface() {
     setIsTyping(true);
 
     try {
-      const response = await axios.post("http://localhost:8000/chat", formData, {
+      const response = await axios.post("https://fastapi-backend-spef.onrender.com/chat", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

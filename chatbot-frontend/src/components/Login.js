@@ -14,7 +14,7 @@ function Login({ onLoginSuccess }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/login", formData);
+      const response = await axios.post("https://fastapi-backend-spef.onrender.com/login", formData);
       localStorage.setItem("token", response.data.token);
       onLoginSuccess();
     } catch (error) {
