@@ -16,7 +16,7 @@ function Register({ onRegisterSuccess }) {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://fastapi-backend-spef.onrender.com/register", formData);
+      await axios.post("http://localhost:8000/register", formData);
       alert("Registration successful! Please log in.");
       onRegisterSuccess();
     } catch (error) {

@@ -10,9 +10,12 @@ function ChatInterface() {
   const [previewImage, setPreviewImage] = useState(null);
   const chatWindowRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (chatWindowRef.current) {
-      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+      chatWindowRef.current.scrollTo({
+        top: chatWindowRef.current.scrollHeight,
+        behavior: "smooth", 
+      });
     }
   }, [messages]);
 
@@ -26,7 +29,7 @@ function ChatInterface() {
   
     try {
       const response = await axios.post(
-        "https://fastapi-backend-spef.onrender.com/chat",
+        "http://localhost:8000/chat",
         { text: input },
         {
           headers: {
@@ -61,7 +64,7 @@ function ChatInterface() {
     setIsTyping(true);
 
     try {
-      const response = await axios.post("https://fastapi-backend-spef.onrender.com/chat", formData, {
+      const response = await axios.post("https://a05f-49-207-218-14.ngrok-free.app/chat", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
